@@ -1,16 +1,15 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:cat_breeds_app/data/breeds/breed.dart';
+import 'package:cat_breeds_app/utils/failure.dart';
 import 'package:http/http.dart' as http;
 
 class TheCatApiService {
-  Future<(Exception?, List<Breed>?)> getBreeds({String? apiKey}) async {
+  Future<(Failure?, List<Breed>?)> getBreeds({String? apiKey}) async {
     final client = http.Client();
     final String path =
         'https://api.thecatapi.com/v1/breeds${apiKey != null ? '?api_key=$apiKey' : ''}';
 
-    print(path);
     final uri = Uri.parse(path);
 
     final response = await client.get(uri);
@@ -24,10 +23,13 @@ class TheCatApiService {
             .toList();
         return (null, breeds);
       } on Exception catch (e) {
-        return (e, null);
+        return (ExceptionCaughtFailure(exception: e), null);
       }
     } else {
-      return (HttpException(response.statusCode.toString()), null);
+      return (
+        HTTPRequestFailure(message: response.statusCode.toString()),
+        null
+      );
     }
   }
 }
