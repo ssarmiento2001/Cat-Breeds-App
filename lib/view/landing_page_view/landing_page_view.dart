@@ -2,6 +2,7 @@ import 'package:cat_breeds_app/bloc/landing_page_bloc/landing_page_cubit.dart';
 import 'package:cat_breeds_app/bloc/landing_page_bloc/landing_page_state.dart';
 import 'package:cat_breeds_app/services/the_cat_api_service.dart';
 import 'package:cat_breeds_app/utils/constants.dart';
+import 'package:cat_breeds_app/view/landing_page_view/showing_breeds_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -48,7 +49,9 @@ class LandingPageView extends StatelessWidget {
                 }
               case ShowingBreedsState _:
                 {
-                  return const Text("Showing breeds state");
+                  return ShowingBreedsView(
+                    breeds: state.breedList,
+                  );
                 }
               case ShowingFailureState _:
                 {
