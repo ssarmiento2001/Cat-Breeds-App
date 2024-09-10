@@ -12,18 +12,20 @@ class ShowingBreedsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Column(
-      children: [
-        Expanded(
-          child: ListView.builder(
-            itemCount: breeds.length,
-            itemBuilder: (context, index) => BreedCard(
-              data: breeds[index],
+    return OrientationBuilder(
+      builder: (context, orientation) => Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: breeds.length,
+              itemBuilder: (context, index) => BreedCard(
+                data: breeds[index],
+                portrait: orientation == Orientation.portrait,
+              ),
             ),
-          ),
-        )
-      ],
+          )
+        ],
+      ),
     );
   }
 }

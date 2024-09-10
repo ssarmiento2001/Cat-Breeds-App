@@ -2,7 +2,7 @@
 
 import 'dart:convert';
 
-import 'package:cat_breeds_app/data/breeds/image.dart';
+import 'package:cat_breeds_app/data/breeds/cat_image.dart';
 import 'package:cat_breeds_app/data/breeds/weight.dart';
 
 class Breed {
@@ -43,7 +43,7 @@ class Breed {
   final String? wikipedia_url;
   final int? hypoallergenic;
   final String? reference_image_id;
-  final Image? image;
+  final CatImage? image;
   Breed({
     this.weight,
     this.id,
@@ -123,7 +123,7 @@ class Breed {
     String? wikipedia_url,
     int? hypoallergenic,
     String? reference_image_id,
-    Image? image,
+    CatImage? image,
   }) {
     return Breed(
       weight: weight ?? this.weight,
@@ -277,7 +277,7 @@ class Breed {
           ? map['reference_image_id'] as String
           : null,
       image: map['image'] != null
-          ? Image.fromMap(map['image'] as Map<String, dynamic>)
+          ? CatImage.fromMap(map['image'] as Map<String, dynamic>)
           : null,
     );
   }
