@@ -5,9 +5,13 @@ import 'package:cat_breeds_app/data/breeds/breed.dart';
 import 'package:http/http.dart' as http;
 
 class TheCatApiService {
-  Future<(Exception?, List<Breed>?)> getBreeds() async {
+  Future<(Exception?, List<Breed>?)> getBreeds({String? apiKey}) async {
     final client = http.Client();
-    final uri = Uri.parse('https://api.thecatapi.com/v1/breeds');
+    final String path =
+        'https://api.thecatapi.com/v1/breeds${apiKey != null ? '?api_key=$apiKey' : ''}';
+
+    print(path);
+    final uri = Uri.parse(path);
 
     final response = await client.get(uri);
 

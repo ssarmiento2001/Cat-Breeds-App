@@ -1,163 +1,169 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+
 import 'dart:convert';
 
-import 'package:cat_breeds_app/data/weight.dart';
+import 'package:cat_breeds_app/data/breeds/image.dart';
+import 'package:cat_breeds_app/data/breeds/weight.dart';
 
 class Breed {
   final Weight? weight;
   final String? id;
   final String? name;
-  final String? cfaUrl;
-  final String? vetstreetUrl;
-  final String? vcahospitalsUrl;
+  final String? cfa_url;
+  final String? vetstreet_url;
+  final String? vcahospitals_url;
   final String? temperament;
   final String? origin;
-  final String? countryCodes;
-  final String? countryCode;
+  final String? country_codes;
+  final String? country_code;
   final String? description;
-  final String? lifeSpan;
+  final String? life_span;
   final int? indoor;
   final int? lap;
-  final String? altNames;
+  final String? alt_names;
   final int? adaptability;
-  final int? affectionLevel;
-  final int? childFriendly;
-  final int? dogFriendly;
-  final int? energyLevel;
+  final int? affection_level;
+  final int? child_friendly;
+  final int? dog_friendly;
+  final int? energy_level;
   final int? grooming;
-  final int? healthIssues;
+  final int? health_issues;
   final int? intelligence;
-  final int? sheddingLevel;
-  final int? socialNeeds;
-  final int? strangerFriendly;
+  final int? shedding_level;
+  final int? social_needs;
+  final int? stranger_friendly;
   final int? vocalisation;
   final int? experimental;
   final int? hairless;
   final int? natural;
   final int? rare;
   final int? rex;
-  final int? suppressedTail;
-  final int? shortLegs;
-  final String? wikipediaUrl;
+  final int? suppressed_tail;
+  final int? short_legs;
+  final String? wikipedia_url;
   final int? hypoallergenic;
-  final String? referenceImageId;
+  final String? reference_image_id;
+  final Image? image;
   Breed({
     this.weight,
     this.id,
     this.name,
-    this.cfaUrl,
-    this.vetstreetUrl,
-    this.vcahospitalsUrl,
+    this.cfa_url,
+    this.vetstreet_url,
+    this.vcahospitals_url,
     this.temperament,
     this.origin,
-    this.countryCodes,
-    this.countryCode,
+    this.country_codes,
+    this.country_code,
     this.description,
-    this.lifeSpan,
+    this.life_span,
     this.indoor,
     this.lap,
-    this.altNames,
+    this.alt_names,
     this.adaptability,
-    this.affectionLevel,
-    this.childFriendly,
-    this.dogFriendly,
-    this.energyLevel,
+    this.affection_level,
+    this.child_friendly,
+    this.dog_friendly,
+    this.energy_level,
     this.grooming,
-    this.healthIssues,
+    this.health_issues,
     this.intelligence,
-    this.sheddingLevel,
-    this.socialNeeds,
-    this.strangerFriendly,
+    this.shedding_level,
+    this.social_needs,
+    this.stranger_friendly,
     this.vocalisation,
     this.experimental,
     this.hairless,
     this.natural,
     this.rare,
     this.rex,
-    this.suppressedTail,
-    this.shortLegs,
-    this.wikipediaUrl,
+    this.suppressed_tail,
+    this.short_legs,
+    this.wikipedia_url,
     this.hypoallergenic,
-    this.referenceImageId,
+    this.reference_image_id,
+    this.image,
   });
 
   Breed copyWith({
     Weight? weight,
     String? id,
     String? name,
-    String? cfaUrl,
-    String? vetstreetUrl,
-    String? vcahospitalsUrl,
+    String? cfa_url,
+    String? vetstreet_url,
+    String? vcahospitals_url,
     String? temperament,
     String? origin,
-    String? countryCodes,
-    String? countryCode,
+    String? country_codes,
+    String? country_code,
     String? description,
-    String? lifeSpan,
+    String? life_span,
     int? indoor,
     int? lap,
-    String? altNames,
+    String? alt_names,
     int? adaptability,
-    int? affectionLevel,
-    int? childFriendly,
-    int? dogFriendly,
-    int? energyLevel,
+    int? affection_level,
+    int? child_friendly,
+    int? dog_friendly,
+    int? energy_level,
     int? grooming,
-    int? healthIssues,
+    int? health_issues,
     int? intelligence,
-    int? sheddingLevel,
-    int? socialNeeds,
-    int? strangerFriendly,
+    int? shedding_level,
+    int? social_needs,
+    int? stranger_friendly,
     int? vocalisation,
     int? experimental,
     int? hairless,
     int? natural,
     int? rare,
     int? rex,
-    int? suppressedTail,
-    int? shortLegs,
-    String? wikipediaUrl,
+    int? suppressed_tail,
+    int? short_legs,
+    String? wikipedia_url,
     int? hypoallergenic,
-    String? referenceImageId,
+    String? reference_image_id,
+    Image? image,
   }) {
     return Breed(
       weight: weight ?? this.weight,
       id: id ?? this.id,
       name: name ?? this.name,
-      cfaUrl: cfaUrl ?? this.cfaUrl,
-      vetstreetUrl: vetstreetUrl ?? this.vetstreetUrl,
-      vcahospitalsUrl: vcahospitalsUrl ?? this.vcahospitalsUrl,
+      cfa_url: cfa_url ?? this.cfa_url,
+      vetstreet_url: vetstreet_url ?? this.vetstreet_url,
+      vcahospitals_url: vcahospitals_url ?? this.vcahospitals_url,
       temperament: temperament ?? this.temperament,
       origin: origin ?? this.origin,
-      countryCodes: countryCodes ?? this.countryCodes,
-      countryCode: countryCode ?? this.countryCode,
+      country_codes: country_codes ?? this.country_codes,
+      country_code: country_code ?? this.country_code,
       description: description ?? this.description,
-      lifeSpan: lifeSpan ?? this.lifeSpan,
+      life_span: life_span ?? this.life_span,
       indoor: indoor ?? this.indoor,
       lap: lap ?? this.lap,
-      altNames: altNames ?? this.altNames,
+      alt_names: alt_names ?? this.alt_names,
       adaptability: adaptability ?? this.adaptability,
-      affectionLevel: affectionLevel ?? this.affectionLevel,
-      childFriendly: childFriendly ?? this.childFriendly,
-      dogFriendly: dogFriendly ?? this.dogFriendly,
-      energyLevel: energyLevel ?? this.energyLevel,
+      affection_level: affection_level ?? this.affection_level,
+      child_friendly: child_friendly ?? this.child_friendly,
+      dog_friendly: dog_friendly ?? this.dog_friendly,
+      energy_level: energy_level ?? this.energy_level,
       grooming: grooming ?? this.grooming,
-      healthIssues: healthIssues ?? this.healthIssues,
+      health_issues: health_issues ?? this.health_issues,
       intelligence: intelligence ?? this.intelligence,
-      sheddingLevel: sheddingLevel ?? this.sheddingLevel,
-      socialNeeds: socialNeeds ?? this.socialNeeds,
-      strangerFriendly: strangerFriendly ?? this.strangerFriendly,
+      shedding_level: shedding_level ?? this.shedding_level,
+      social_needs: social_needs ?? this.social_needs,
+      stranger_friendly: stranger_friendly ?? this.stranger_friendly,
       vocalisation: vocalisation ?? this.vocalisation,
       experimental: experimental ?? this.experimental,
       hairless: hairless ?? this.hairless,
       natural: natural ?? this.natural,
       rare: rare ?? this.rare,
       rex: rex ?? this.rex,
-      suppressedTail: suppressedTail ?? this.suppressedTail,
-      shortLegs: shortLegs ?? this.shortLegs,
-      wikipediaUrl: wikipediaUrl ?? this.wikipediaUrl,
+      suppressed_tail: suppressed_tail ?? this.suppressed_tail,
+      short_legs: short_legs ?? this.short_legs,
+      wikipedia_url: wikipedia_url ?? this.wikipedia_url,
       hypoallergenic: hypoallergenic ?? this.hypoallergenic,
-      referenceImageId: referenceImageId ?? this.referenceImageId,
+      reference_image_id: reference_image_id ?? this.reference_image_id,
+      image: image ?? this.image,
     );
   }
 
@@ -166,40 +172,41 @@ class Breed {
       'weight': weight?.toMap(),
       'id': id,
       'name': name,
-      'cfa_url': cfaUrl,
-      'vetstreet_url': vetstreetUrl,
-      'vcahospitals_url': vcahospitalsUrl,
+      'cfa_url': cfa_url,
+      'vetstreet_url': vetstreet_url,
+      'vcahospitals_url': vcahospitals_url,
       'temperament': temperament,
       'origin': origin,
-      'country_codes': countryCodes,
-      'country_code': countryCode,
+      'country_codes': country_codes,
+      'country_code': country_code,
       'description': description,
-      'life_span': lifeSpan,
+      'life_span': life_span,
       'indoor': indoor,
       'lap': lap,
-      'alt_names': altNames,
+      'alt_names': alt_names,
       'adaptability': adaptability,
-      'affection_level': affectionLevel,
-      'child_friendly': childFriendly,
-      'dog_friendly': dogFriendly,
-      'energy_level': energyLevel,
+      'affection_level': affection_level,
+      'child_friendly': child_friendly,
+      'dog_friendly': dog_friendly,
+      'energy_level': energy_level,
       'grooming': grooming,
-      'health_issues': healthIssues,
+      'health_issues': health_issues,
       'intelligence': intelligence,
-      'shedding_level': sheddingLevel,
-      'social_needs': socialNeeds,
-      'stranger_friendly': strangerFriendly,
+      'shedding_level': shedding_level,
+      'social_needs': social_needs,
+      'stranger_friendly': stranger_friendly,
       'vocalisation': vocalisation,
       'experimental': experimental,
       'hairless': hairless,
       'natural': natural,
       'rare': rare,
       'rex': rex,
-      'suppressed_tail': suppressedTail,
-      'short_legs': shortLegs,
-      'wikipedia_url': wikipediaUrl,
+      'suppressed_tail': suppressed_tail,
+      'short_legs': short_legs,
+      'wikipedia_url': wikipedia_url,
       'hypoallergenic': hypoallergenic,
-      'reference_image_id': referenceImageId,
+      'reference_image_id': reference_image_id,
+      'image': image?.toMap(),
     };
   }
 
@@ -210,45 +217,45 @@ class Breed {
           : null,
       id: map['id'] != null ? map['id'] as String : null,
       name: map['name'] != null ? map['name'] as String : null,
-      cfaUrl: map['cfa_url'] != null ? map['cfa_url'] as String : null,
-      vetstreetUrl:
+      cfa_url: map['cfa_url'] != null ? map['cfa_url'] as String : null,
+      vetstreet_url:
           map['vetstreet_url'] != null ? map['vetstreet_url'] as String : null,
-      vcahospitalsUrl: map['vcahospitals_url'] != null
+      vcahospitals_url: map['vcahospitals_url'] != null
           ? map['vcahospitals_url'] as String
           : null,
       temperament:
           map['temperament'] != null ? map['temperament'] as String : null,
       origin: map['origin'] != null ? map['origin'] as String : null,
-      countryCodes:
+      country_codes:
           map['country_codes'] != null ? map['country_codes'] as String : null,
-      countryCode:
+      country_code:
           map['country_code'] != null ? map['country_code'] as String : null,
       description:
           map['description'] != null ? map['description'] as String : null,
-      lifeSpan: map['life_span'] != null ? map['life_span'] as String : null,
+      life_span: map['life_span'] != null ? map['life_span'] as String : null,
       indoor: map['indoor'] != null ? map['indoor'] as int : null,
       lap: map['lap'] != null ? map['lap'] as int : null,
-      altNames: map['alt_names'] != null ? map['alt_names'] as String : null,
+      alt_names: map['alt_names'] != null ? map['alt_names'] as String : null,
       adaptability:
           map['adaptability'] != null ? map['adaptability'] as int : null,
-      affectionLevel:
+      affection_level:
           map['affection_level'] != null ? map['affection_level'] as int : null,
-      childFriendly:
+      child_friendly:
           map['child_friendly'] != null ? map['child_friendly'] as int : null,
-      dogFriendly:
+      dog_friendly:
           map['dog_friendly'] != null ? map['dog_friendly'] as int : null,
-      energyLevel:
+      energy_level:
           map['energy_level'] != null ? map['energy_level'] as int : null,
       grooming: map['grooming'] != null ? map['grooming'] as int : null,
-      healthIssues:
+      health_issues:
           map['health_issues'] != null ? map['health_issues'] as int : null,
       intelligence:
           map['intelligence'] != null ? map['intelligence'] as int : null,
-      sheddingLevel:
+      shedding_level:
           map['shedding_level'] != null ? map['shedding_level'] as int : null,
-      socialNeeds:
+      social_needs:
           map['social_needs'] != null ? map['social_needs'] as int : null,
-      strangerFriendly: map['stranger_friendly'] != null
+      stranger_friendly: map['stranger_friendly'] != null
           ? map['stranger_friendly'] as int
           : null,
       vocalisation:
@@ -259,15 +266,18 @@ class Breed {
       natural: map['natural'] != null ? map['natural'] as int : null,
       rare: map['rare'] != null ? map['rare'] as int : null,
       rex: map['rex'] != null ? map['rex'] as int : null,
-      suppressedTail:
+      suppressed_tail:
           map['suppressed_tail'] != null ? map['suppressed_tail'] as int : null,
-      shortLegs: map['short_legs'] != null ? map['short_legs'] as int : null,
-      wikipediaUrl:
+      short_legs: map['short_legs'] != null ? map['short_legs'] as int : null,
+      wikipedia_url:
           map['wikipedia_url'] != null ? map['wikipedia_url'] as String : null,
       hypoallergenic:
           map['hypoallergenic'] != null ? map['hypoallergenic'] as int : null,
-      referenceImageId: map['reference_image_id'] != null
+      reference_image_id: map['reference_image_id'] != null
           ? map['reference_image_id'] as String
+          : null,
+      image: map['image'] != null
+          ? Image.fromMap(map['image'] as Map<String, dynamic>)
           : null,
     );
   }
@@ -279,7 +289,7 @@ class Breed {
 
   @override
   String toString() {
-    return 'Breed(weight: $weight, id: $id, name: $name, cfa_url: $cfaUrl, vetstreet_url: $vetstreetUrl, vcahospitals_url: $vcahospitalsUrl, temperament: $temperament, origin: $origin, country_codes: $countryCodes, country_code: $countryCode, description: $description, life_span: $lifeSpan, indoor: $indoor, lap: $lap, alt_names: $altNames, adaptability: $adaptability, affection_level: $affectionLevel, child_friendly: $childFriendly, dog_friendly: $dogFriendly, energy_level: $energyLevel, grooming: $grooming, health_issues: $healthIssues, intelligence: $intelligence, shedding_level: $sheddingLevel, social_needs: $socialNeeds, stranger_friendly: $strangerFriendly, vocalisation: $vocalisation, experimental: $experimental, hairless: $hairless, natural: $natural, rare: $rare, rex: $rex, suppressed_tail: $suppressedTail, short_legs: $shortLegs, wikipedia_url: $wikipediaUrl, hypoallergenic: $hypoallergenic, reference_image_id: $referenceImageId)';
+    return 'Breed(weight: $weight, id: $id, name: $name, cfa_url: $cfa_url, vetstreet_url: $vetstreet_url, vcahospitals_url: $vcahospitals_url, temperament: $temperament, origin: $origin, country_codes: $country_codes, country_code: $country_code, description: $description, life_span: $life_span, indoor: $indoor, lap: $lap, alt_names: $alt_names, adaptability: $adaptability, affection_level: $affection_level, child_friendly: $child_friendly, dog_friendly: $dog_friendly, energy_level: $energy_level, grooming: $grooming, health_issues: $health_issues, intelligence: $intelligence, shedding_level: $shedding_level, social_needs: $social_needs, stranger_friendly: $stranger_friendly, vocalisation: $vocalisation, experimental: $experimental, hairless: $hairless, natural: $natural, rare: $rare, rex: $rex, suppressed_tail: $suppressed_tail, short_legs: $short_legs, wikipedia_url: $wikipedia_url, hypoallergenic: $hypoallergenic, reference_image_id: $reference_image_id, image: $image)';
   }
 
   @override
@@ -289,40 +299,41 @@ class Breed {
     return other.weight == weight &&
         other.id == id &&
         other.name == name &&
-        other.cfaUrl == cfaUrl &&
-        other.vetstreetUrl == vetstreetUrl &&
-        other.vcahospitalsUrl == vcahospitalsUrl &&
+        other.cfa_url == cfa_url &&
+        other.vetstreet_url == vetstreet_url &&
+        other.vcahospitals_url == vcahospitals_url &&
         other.temperament == temperament &&
         other.origin == origin &&
-        other.countryCodes == countryCodes &&
-        other.countryCode == countryCode &&
+        other.country_codes == country_codes &&
+        other.country_code == country_code &&
         other.description == description &&
-        other.lifeSpan == lifeSpan &&
+        other.life_span == life_span &&
         other.indoor == indoor &&
         other.lap == lap &&
-        other.altNames == altNames &&
+        other.alt_names == alt_names &&
         other.adaptability == adaptability &&
-        other.affectionLevel == affectionLevel &&
-        other.childFriendly == childFriendly &&
-        other.dogFriendly == dogFriendly &&
-        other.energyLevel == energyLevel &&
+        other.affection_level == affection_level &&
+        other.child_friendly == child_friendly &&
+        other.dog_friendly == dog_friendly &&
+        other.energy_level == energy_level &&
         other.grooming == grooming &&
-        other.healthIssues == healthIssues &&
+        other.health_issues == health_issues &&
         other.intelligence == intelligence &&
-        other.sheddingLevel == sheddingLevel &&
-        other.socialNeeds == socialNeeds &&
-        other.strangerFriendly == strangerFriendly &&
+        other.shedding_level == shedding_level &&
+        other.social_needs == social_needs &&
+        other.stranger_friendly == stranger_friendly &&
         other.vocalisation == vocalisation &&
         other.experimental == experimental &&
         other.hairless == hairless &&
         other.natural == natural &&
         other.rare == rare &&
         other.rex == rex &&
-        other.suppressedTail == suppressedTail &&
-        other.shortLegs == shortLegs &&
-        other.wikipediaUrl == wikipediaUrl &&
+        other.suppressed_tail == suppressed_tail &&
+        other.short_legs == short_legs &&
+        other.wikipedia_url == wikipedia_url &&
         other.hypoallergenic == hypoallergenic &&
-        other.referenceImageId == referenceImageId;
+        other.reference_image_id == reference_image_id &&
+        other.image == image;
   }
 
   @override
@@ -330,39 +341,40 @@ class Breed {
     return weight.hashCode ^
         id.hashCode ^
         name.hashCode ^
-        cfaUrl.hashCode ^
-        vetstreetUrl.hashCode ^
-        vcahospitalsUrl.hashCode ^
+        cfa_url.hashCode ^
+        vetstreet_url.hashCode ^
+        vcahospitals_url.hashCode ^
         temperament.hashCode ^
         origin.hashCode ^
-        countryCodes.hashCode ^
-        countryCode.hashCode ^
+        country_codes.hashCode ^
+        country_code.hashCode ^
         description.hashCode ^
-        lifeSpan.hashCode ^
+        life_span.hashCode ^
         indoor.hashCode ^
         lap.hashCode ^
-        altNames.hashCode ^
+        alt_names.hashCode ^
         adaptability.hashCode ^
-        affectionLevel.hashCode ^
-        childFriendly.hashCode ^
-        dogFriendly.hashCode ^
-        energyLevel.hashCode ^
+        affection_level.hashCode ^
+        child_friendly.hashCode ^
+        dog_friendly.hashCode ^
+        energy_level.hashCode ^
         grooming.hashCode ^
-        healthIssues.hashCode ^
+        health_issues.hashCode ^
         intelligence.hashCode ^
-        sheddingLevel.hashCode ^
-        socialNeeds.hashCode ^
-        strangerFriendly.hashCode ^
+        shedding_level.hashCode ^
+        social_needs.hashCode ^
+        stranger_friendly.hashCode ^
         vocalisation.hashCode ^
         experimental.hashCode ^
         hairless.hashCode ^
         natural.hashCode ^
         rare.hashCode ^
         rex.hashCode ^
-        suppressedTail.hashCode ^
-        shortLegs.hashCode ^
-        wikipediaUrl.hashCode ^
+        suppressed_tail.hashCode ^
+        short_legs.hashCode ^
+        wikipedia_url.hashCode ^
         hypoallergenic.hashCode ^
-        referenceImageId.hashCode;
+        reference_image_id.hashCode ^
+        image.hashCode;
   }
 }

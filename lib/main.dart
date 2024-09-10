@@ -61,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<void> _incrementCounter() async {
     final service = TheCatApiService();
 
-    final result = await service.getBreeds();
+    final result = await service.getBreeds(apiKey: 'apikey');
 
     setState(() {
       // This call to setState tells the Flutter framework that something has
