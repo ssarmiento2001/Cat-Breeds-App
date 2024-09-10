@@ -1,5 +1,6 @@
 import 'package:cat_breeds_app/data/breeds/breed.dart';
 import 'package:cat_breeds_app/data/breeds/cat_image.dart';
+import 'package:cat_breeds_app/utils/assets.dart';
 import 'package:flutter/material.dart';
 
 class BreedCard extends StatelessWidget {
@@ -109,20 +110,40 @@ class LandscapeCard extends StatelessWidget {
                 constraints: BoxConstraints(
                   maxHeight: mediaQuery.size.height * 0.6,
                 ),
-                child: image != null
-                    ? ClipRRect(
-                        borderRadius: BorderRadius.circular(8.0),
-                        child: Image.network(
-                          image!.url ?? '',
-                          fit: BoxFit.fill,
-                        ),
-                      )
-                    : const Text('Image'),
+                child: CatImageWidget(url: image?.url),
               ),
             ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class CatImageWidget extends StatelessWidget {
+  const CatImageWidget({
+    super.key,
+    required this.url,
+  });
+
+  final String? url;
+
+  @override
+  Widget build(BuildContext context) {
+    const placeHolder = Assets.placeholderImage;
+    final color = Theme.of(context).colorScheme.onPrimaryContainer;
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(8.0),
+      child: url != null
+          ? FadeInImage.assetNetwork(
+              placeholderColor: color,
+              placeholder: placeHolder,
+              image: url!,
+            )
+          : Image.asset(
+              placeHolder,
+              color: color,
+            ),
     );
   }
 }
@@ -171,15 +192,7 @@ class PortraitCard extends StatelessWidget {
                   maxHeight: mediaQuery.size.height * 0.8,
                   maxWidth: mediaQuery.size.width * 0.8,
                 ),
-                child: image != null
-                    ? ClipRRect(
-                        borderRadius: BorderRadius.circular(8.0),
-                        child: Image.network(
-                          image!.url ?? '',
-                          fit: BoxFit.fill,
-                        ),
-                      )
-                    : const Text('Image'),
+                child: CatImageWidget(url: image?.url),
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
