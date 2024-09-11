@@ -1,5 +1,6 @@
 import 'package:cat_breeds_app/bloc/landing_page_bloc/landing_page_cubit.dart';
 import 'package:cat_breeds_app/bloc/landing_page_bloc/landing_page_state.dart';
+import 'package:cat_breeds_app/data/breeds/breed.dart';
 import 'package:cat_breeds_app/services/the_cat_api_service.dart';
 import 'package:cat_breeds_app/utils/constants.dart';
 import 'package:cat_breeds_app/utils/failure.dart';
@@ -13,9 +14,12 @@ class LandingPageView extends StatelessWidget {
   const LandingPageView({
     super.key,
     required TheCatApiService apiService,
-  }) : _apiService = apiService;
+    required Function(Breed) onBreedButtonPressed,
+  })  : _apiService = apiService,
+        _onBreedButtonPressed = onBreedButtonPressed;
 
   final TheCatApiService _apiService;
+  final Function(Breed) _onBreedButtonPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +58,7 @@ class LandingPageView extends StatelessWidget {
                 {
                   return ShowingBreedsView(
                     breeds: state.breedList,
+                    onButtonPressed: _onBreedButtonPressed,
                   );
                 }
               case ShowingFailureState _:

@@ -1,14 +1,20 @@
 import 'package:cat_breeds_app/data/breeds/breed.dart';
 import 'package:cat_breeds_app/data/breeds/cat_image.dart';
-import 'package:cat_breeds_app/utils/assets.dart';
 import 'package:cat_breeds_app/utils/constants.dart';
+import 'package:cat_breeds_app/view/cat_image_widget.dart';
 import 'package:flutter/material.dart';
 
 class BreedCard extends StatelessWidget {
-  const BreedCard({super.key, required this.data, this.portrait = true});
+  const BreedCard({
+    super.key,
+    required this.data,
+    required this.onButtonPressed,
+    this.portrait = true,
+  });
 
   final Breed data;
   final bool portrait;
+  final VoidCallback onButtonPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +33,7 @@ class BreedCard extends StatelessWidget {
         image: image,
         bodyTextStyle: bodyTextStyle,
         bodyColor: bodyColor,
+        onButtonPressed: onButtonPressed,
       );
     } else {
       return LandscapeCard(
@@ -36,6 +43,7 @@ class BreedCard extends StatelessWidget {
         image: image,
         bodyTextStyle: bodyTextStyle,
         bodyColor: bodyColor,
+        onButtonPressed: onButtonPressed,
       );
     }
   }
@@ -50,6 +58,7 @@ class LandscapeCard extends StatelessWidget {
     required this.image,
     required this.bodyTextStyle,
     required this.bodyColor,
+    required this.onButtonPressed,
   });
 
   final ThemeData theme;
@@ -58,6 +67,7 @@ class LandscapeCard extends StatelessWidget {
   final CatImage? image;
   final TextStyle? bodyTextStyle;
   final Color bodyColor;
+  final VoidCallback onButtonPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -118,35 +128,11 @@ class LandscapeCard extends StatelessWidget {
             ],
           ),
         ),
-        InformationButton(theme: theme),
+        InformationButton(
+          theme: theme,
+          onButtonPressed: onButtonPressed,
+        ),
       ],
-    );
-  }
-}
-
-class CatImageWidget extends StatelessWidget {
-  const CatImageWidget({
-    super.key,
-    required this.url,
-  });
-
-  final String? url;
-
-  @override
-  Widget build(BuildContext context) {
-    final color = Theme.of(context).colorScheme.onPrimaryContainer;
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(8.0),
-      child: url != null
-          ? FadeInImage.assetNetwork(
-              placeholderColor: color,
-              placeholder: Assets.loadingImage,
-              image: url!,
-            )
-          : Image.asset(
-              Assets.placeholderImage,
-              color: color,
-            ),
     );
   }
 }
@@ -160,6 +146,7 @@ class PortraitCard extends StatelessWidget {
     required this.image,
     required this.bodyTextStyle,
     required this.bodyColor,
+    required this.onButtonPressed,
   });
 
   final ThemeData theme;
@@ -168,6 +155,7 @@ class PortraitCard extends StatelessWidget {
   final CatImage? image;
   final TextStyle? bodyTextStyle;
   final Color bodyColor;
+  final VoidCallback onButtonPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -235,7 +223,10 @@ class PortraitCard extends StatelessWidget {
               ],
             ),
           ),
-          InformationButton(theme: theme),
+          InformationButton(
+            theme: theme,
+            onButtonPressed: onButtonPressed,
+          ),
         ],
       ),
     );
@@ -246,16 +237,18 @@ class InformationButton extends StatelessWidget {
   const InformationButton({
     super.key,
     required this.theme,
+    required this.onButtonPressed,
   });
 
   final ThemeData theme;
+  final VoidCallback onButtonPressed;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: FloatingActionButton(
-        onPressed: () {},
+        onPressed: onButtonPressed,
         backgroundColor: theme.colorScheme.primary,
         child: Icon(
           Icons.info_outline,

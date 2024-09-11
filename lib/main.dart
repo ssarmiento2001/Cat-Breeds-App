@@ -1,6 +1,7 @@
 import 'package:cat_breeds_app/services/the_cat_api_service.dart';
 import 'package:cat_breeds_app/utils/constants.dart';
 import 'package:cat_breeds_app/utils/routes.dart';
+import 'package:cat_breeds_app/view/breed_page_view/breed_page_view.dart';
 import 'package:cat_breeds_app/view/landing_page_view/landing_page_view.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +26,19 @@ class MyApp extends StatelessWidget {
       routes: {
         Routes.landingPageRoute: (context) => LandingPageView(
               apiService: theCatApiService,
-            )
+              onBreedButtonPressed: (breed) {
+                Navigator.pushNamed(
+                  context,
+                  Routes.breedPageRoute,
+                  arguments: breed,
+                );
+              },
+            ),
+        Routes.breedPageRoute: (context) => BreedPageView(
+              onBackButtonPressed: () {
+                Navigator.pop(context);
+              },
+            ),
       },
     );
   }

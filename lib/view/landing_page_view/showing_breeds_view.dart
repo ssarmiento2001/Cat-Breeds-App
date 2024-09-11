@@ -6,9 +6,11 @@ class ShowingBreedsView extends StatefulWidget {
   const ShowingBreedsView({
     super.key,
     required this.breeds,
+    required this.onButtonPressed,
   });
 
   final List<Breed> breeds;
+  final Function(Breed) onButtonPressed;
 
   @override
   State<ShowingBreedsView> createState() => _ShowingBreedsViewState();
@@ -61,6 +63,9 @@ class _ShowingBreedsViewState extends State<ShowingBreedsView> {
               itemCount: breeds.length,
               itemBuilder: (context, index) => BreedCard(
                 data: breeds[index],
+                onButtonPressed: () {
+                  widget.onButtonPressed(breeds[index]);
+                },
                 portrait: orientation == Orientation.portrait,
               ),
             ),
