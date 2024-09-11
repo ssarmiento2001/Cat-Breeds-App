@@ -1,7 +1,10 @@
+import 'dart:math';
+
 import 'package:cat_breeds_app/data/breeds/breed.dart';
 import 'package:cat_breeds_app/data/breeds/cat_image.dart';
 import 'package:cat_breeds_app/utils/constants.dart';
 import 'package:cat_breeds_app/view/cat_image_widget.dart';
+import 'package:cat_breeds_app/view/rated_property_widget.dart';
 import 'package:flutter/material.dart';
 
 class BreedCard extends StatelessWidget {
@@ -93,7 +96,7 @@ class LandscapeCard extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '${Constants.country}: ${data.origin ?? Constants.dataNotFound}',
+                      '${Constants.origin}: ${data.origin ?? Constants.dataNotFound}',
                       style: bodyTextStyle,
                     ),
                     Row(
@@ -102,14 +105,10 @@ class LandscapeCard extends StatelessWidget {
                           '${Constants.intelligence}: ',
                           style: bodyTextStyle,
                         ),
-                        Row(
-                          children: List.filled(
-                            data.intelligence ?? 0,
-                            Icon(
-                              Icons.pets,
-                              color: bodyColor,
-                            ),
-                          ),
+                        RatedPropertyWidget(
+                          icon: Icons.pets,
+                          rate: data.intelligence ?? 0,
+                          color: bodyColor,
                         ),
                       ],
                     )
@@ -196,7 +195,7 @@ class PortraitCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Text(
-                        '${Constants.country}: ${data.origin ?? Constants.dataNotFound}',
+                        '${Constants.origin}: ${data.origin ?? Constants.dataNotFound}',
                         style: bodyTextStyle,
                       ),
                       Row(
@@ -206,14 +205,10 @@ class PortraitCard extends StatelessWidget {
                             '${Constants.intelligence}: ',
                             style: bodyTextStyle,
                           ),
-                          Row(
-                            children: List.filled(
-                              data.intelligence ?? 0,
-                              Icon(
-                                Icons.pets,
-                                color: bodyColor,
-                              ),
-                            ),
+                          RatedPropertyWidget(
+                            icon: Icons.pets,
+                            rate: data.intelligence ?? 0,
+                            color: bodyColor,
                           ),
                         ],
                       )
