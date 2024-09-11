@@ -241,6 +241,7 @@ class InformationButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: FloatingActionButton(
+        shape: const CircleBorder(),
         onPressed: onButtonPressed,
         backgroundColor: theme.colorScheme.primary,
         child: Icon(

@@ -34,9 +34,12 @@ class LandingPageView extends StatelessWidget {
         title: Text(
           Constants.landingPageTitle.toUpperCase(),
         ),
-        leading: Icon(
-          Icons.pets_rounded,
-          color: colorScheme.inversePrimary,
+        leading: IconButton(
+          onPressed: cubit.refreshData,
+          icon: Icon(
+            Icons.refresh,
+            color: colorScheme.onPrimary,
+          ),
         ),
         centerTitle: true,
         titleTextStyle: theme.textTheme.titleLarge?.copyWith(

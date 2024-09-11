@@ -78,7 +78,7 @@ class BreedInformationLandscape extends StatelessWidget {
     return Row(
       children: [
         Padding(
-          padding: const EdgeInsets.only(right: 20.0, left: 20.0),
+          padding: const EdgeInsets.only(right: 20.0),
           child: ConstrainedBox(
             constraints: BoxConstraints(
               maxWidth: mediaQuery.size.width * 0.5,
@@ -148,7 +148,7 @@ class BreedInformationPortrait extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
+          padding: const EdgeInsets.only(bottom: 20.0),
           child: ConstrainedBox(
             constraints: BoxConstraints(
               maxHeight: mediaQuery.size.height * 0.5,

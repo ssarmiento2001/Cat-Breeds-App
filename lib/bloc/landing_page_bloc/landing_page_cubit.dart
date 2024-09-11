@@ -52,4 +52,23 @@ class LandingPageCubit extends Cubit<LandingPageState> {
             );
     }
   }
+
+  Future<void> refreshData() async {
+    switch (state) {
+      case LoadingLandingPageState _:
+        {
+          return;
+        }
+      default:
+        {
+          return _refreshData();
+        }
+    }
+  }
+
+  Future<void> _refreshData() async {
+    emit(LoadingLandingPageState());
+    await Future.delayed(const Duration(seconds: 1));
+    _requestBreedsData();
+  }
 }
