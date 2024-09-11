@@ -1,5 +1,6 @@
 import 'package:cat_breeds_app/bloc/landing_page_bloc/landing_page_state.dart';
 import 'package:cat_breeds_app/services/the_cat_api_service.dart';
+import 'package:cat_breeds_app/utils/constants.dart';
 import 'package:cat_breeds_app/utils/failure.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -35,7 +36,9 @@ class LandingPageCubit extends Cubit<LandingPageState> {
   }
 
   Future<void> _requestBreedsData() async {
-    final result = await _apiService.getBreeds();
+    final result = await _apiService.getBreeds(
+      apiKey: Constants.appiKey,
+    );
 
     if (result.$1 != null) {
       return emitFailureState(result.$1!);
