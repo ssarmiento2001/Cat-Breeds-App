@@ -2,7 +2,10 @@ import 'package:cat_breeds_app/bloc/landing_page_bloc/landing_page_cubit.dart';
 import 'package:cat_breeds_app/bloc/landing_page_bloc/landing_page_state.dart';
 import 'package:cat_breeds_app/services/the_cat_api_service.dart';
 import 'package:cat_breeds_app/utils/constants.dart';
+import 'package:cat_breeds_app/utils/failure.dart';
 import 'package:cat_breeds_app/view/landing_page_view/showing_breeds_view.dart';
+import 'package:cat_breeds_app/view/loading_view.dart';
+import 'package:cat_breeds_app/view/showing_failure_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -45,7 +48,7 @@ class LandingPageView extends StatelessWidget {
             switch (state) {
               case LoadingLandingPageState _:
                 {
-                  return const CircularProgressIndicator();
+                  return const LoadingView();
                 }
               case ShowingBreedsState _:
                 {
@@ -55,11 +58,13 @@ class LandingPageView extends StatelessWidget {
                 }
               case ShowingFailureState _:
                 {
-                  return const Text("Showing Failure");
+                  return ShowingFailureView(failure: state.failure);
                 }
               default:
                 {
-                  return const Text("Showing Failure");
+                  return ShowingFailureView(
+                    failure: DefaultFailure(),
+                  );
                 }
             }
           }),

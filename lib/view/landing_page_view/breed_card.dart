@@ -1,6 +1,7 @@
 import 'package:cat_breeds_app/data/breeds/breed.dart';
 import 'package:cat_breeds_app/data/breeds/cat_image.dart';
 import 'package:cat_breeds_app/utils/assets.dart';
+import 'package:cat_breeds_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class BreedCard extends StatelessWidget {
@@ -60,62 +61,65 @@ class LandscapeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: Card(
-        elevation: 5.0,
-        color: theme.colorScheme.primaryContainer,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            SizedBox(
-              height: mediaQuery.size.height * 0.5,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    data.name ?? "Breed name",
-                    style: theme.textTheme.headlineLarge?.copyWith(
-                      color: theme.colorScheme.primary,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    data.origin ?? 'Country of Origin',
-                    style: bodyTextStyle,
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        'Intelligence: ',
-                        style: bodyTextStyle,
+    return Stack(
+      children: [
+        Card(
+          elevation: 5.0,
+          color: theme.colorScheme.primaryContainer,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              SizedBox(
+                height: mediaQuery.size.height * 0.5,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(
+                      data.name ?? Constants.dataNotFound,
+                      style: theme.textTheme.headlineLarge?.copyWith(
+                        color: theme.colorScheme.primary,
+                        fontWeight: FontWeight.bold,
                       ),
-                      Row(
-                        children: List.filled(
-                          data.intelligence ?? 0,
-                          Icon(
-                            Icons.pets,
-                            color: bodyColor,
+                    ),
+                    Text(
+                      '${Constants.country}: ${data.origin ?? Constants.dataNotFound}',
+                      style: bodyTextStyle,
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          '${Constants.intelligence}: ',
+                          style: bodyTextStyle,
+                        ),
+                        Row(
+                          children: List.filled(
+                            data.intelligence ?? 0,
+                            Icon(
+                              Icons.pets,
+                              color: bodyColor,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
-              child: ConstrainedBox(
-                constraints: BoxConstraints(
-                  maxHeight: mediaQuery.size.height * 0.6,
+                      ],
+                    )
+                  ],
                 ),
-                child: CatImageWidget(url: image?.url),
               ),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxHeight: mediaQuery.size.height * 0.6,
+                  ),
+                  child: CatImageWidget(url: image?.url),
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
+        InformationButton(theme: theme),
+      ],
     );
   }
 }
@@ -130,18 +134,17 @@ class CatImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const placeHolder = Assets.placeholderImage;
     final color = Theme.of(context).colorScheme.onPrimaryContainer;
     return ClipRRect(
       borderRadius: BorderRadius.circular(8.0),
       child: url != null
           ? FadeInImage.assetNetwork(
               placeholderColor: color,
-              placeholder: placeHolder,
+              placeholder: Assets.loadingImage,
               image: url!,
             )
           : Image.asset(
-              placeHolder,
+              Assets.placeholderImage,
               color: color,
             ),
     );
@@ -170,63 +173,93 @@ class PortraitCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: SizedBox(
-        child: Card(
-          elevation: 5.0,
-          color: theme.colorScheme.primaryContainer,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: Text(
-                  data.name ?? "Breed name",
-                  style: theme.textTheme.headlineLarge?.copyWith(
-                    color: theme.colorScheme.primary,
-                    fontWeight: FontWeight.bold,
+      child: Stack(
+        alignment: Alignment.topRight,
+        children: [
+          Card(
+            elevation: 5.0,
+            color: theme.colorScheme.primaryContainer,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Container(
+                  margin: const EdgeInsets.all(10.0),
+                  width: mediaQuery.size.width * 0.5,
+                  child: Text(
+                    data.name ?? Constants.dataNotFound,
+                    style: theme.textTheme.headlineLarge?.copyWith(
+                      color: theme.colorScheme.primary,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
                 ),
-              ),
-              ConstrainedBox(
-                constraints: BoxConstraints(
-                  maxHeight: mediaQuery.size.height * 0.8,
-                  maxWidth: mediaQuery.size.width * 0.8,
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxHeight: mediaQuery.size.height * 0.8,
+                    maxWidth: mediaQuery.size.width * 0.8,
+                  ),
+                  child: CatImageWidget(url: image?.url),
                 ),
-                child: CatImageWidget(url: image?.url),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(
-                      data.origin ?? 'Country of Origin',
-                      style: bodyTextStyle,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Intelligence: ',
-                          style: bodyTextStyle,
-                        ),
-                        Row(
-                          children: List.filled(
-                            data.intelligence ?? 0,
-                            Icon(
-                              Icons.pets,
-                              color: bodyColor,
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text(
+                        '${Constants.country}: ${data.origin ?? Constants.dataNotFound}',
+                        style: bodyTextStyle,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            '${Constants.intelligence}: ',
+                            style: bodyTextStyle,
+                          ),
+                          Row(
+                            children: List.filled(
+                              data.intelligence ?? 0,
+                              Icon(
+                                Icons.pets,
+                                color: bodyColor,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              )
-            ],
+                        ],
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
+          InformationButton(theme: theme),
+        ],
+      ),
+    );
+  }
+}
+
+class InformationButton extends StatelessWidget {
+  const InformationButton({
+    super.key,
+    required this.theme,
+  });
+
+  final ThemeData theme;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: theme.colorScheme.primary,
+        child: Icon(
+          Icons.info_outline,
+          color: theme.colorScheme.onPrimary,
         ),
       ),
     );
