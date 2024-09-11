@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:cat_breeds_app/data/breeds/breed.dart';
 import 'package:cat_breeds_app/data/breeds/cat_image.dart';
 import 'package:cat_breeds_app/utils/constants.dart';
